@@ -1,0 +1,17 @@
+[
+    {
+        "idx": 28,
+        "id": "862572c0-df66-4002-a1f4-4be54b0945d3",
+        "created_at": "2025-10-31 20:31:35.491015+00",
+        "children_id": "038c7f71-ae2f-44ee-a64b-6062a6c210fb",
+        "time_between_generation_and_first_viewed": null,
+        "last_viewed_at": null,
+        "viewed_times": 0,
+        "story_id": "505a0966-d9f3-406b-8e58-c1e3aea32447",
+        "status": "completed",
+        "title": "The Sweet Quest of Prince Chocolat and Glim",
+        "cover_image": "https://lvotwwcviiizjbfqxbsn.supabase.co/storage/v1/object/public/book-images/cefbde3c-30e5-43a4-b011-b0ea947d3ea2_862572c0-df66-4002-a1f4-4be54b0945d3_pagecover_cover_20251031_203705_339912.png",
+        "note": 5,
+        "is_public": false
+    }
+]

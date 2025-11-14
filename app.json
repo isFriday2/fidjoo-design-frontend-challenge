@@ -1,0 +1,34 @@
+{
+  "expo": {
+    "name": "fidjoo-design-frontend-challenge",
+    "slug": "fidjoo-design-frontend-challenge",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/images/mascotte/blue/blue.png",
+    "scheme": "fidjoodesignfrontendchallenge",
+    "userInterfaceStyle": "automatic",
+    "newArchEnabled": true,
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.ethanfidjoo.fidjoo-design-frontend-challenge"
+    },
+    "android": {
+      "adaptiveIcon": {
+        "backgroundColor": "#ffffff"
+      },
+      "edgeToEdgeEnabled": true,
+      "predictiveBackGestureEnabled": false
+    },
+    "web": {
+      "output": "static",
+      "favicon": "./assets/images/mascotte/blue/blue.png"
+    },
+    "plugins": [
+      "expo-router"
+    ],
+    "experiments": {
+      "typedRoutes": true,
+      "reactCompiler": true
+    }
+  }
+}
