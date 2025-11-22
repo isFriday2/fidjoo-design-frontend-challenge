@@ -1,5 +1,6 @@
 import { StyleSheet, Text, View } from 'react-native';
-
+import { Redirect } from 'expo-router';
+import React from 'react';
 /**
  * Creation Screen - Choose Style & Hero
  *
@@ -14,6 +15,7 @@ import { StyleSheet, Text, View } from 'react-native';
  * - Heroes have type="hero" and are linked to styles via the "style" property
  */
 export default function CreationScreen() {
+  return <Redirect href="/storycreation" />;
   return (
     <View style={styles.container}>
       <View style={styles.content}>

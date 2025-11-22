@@ -1,5 +1,6 @@
 import { StyleSheet, Text, View } from 'react-native';
-
+import { Redirect } from 'expo-router';
+import React from 'react';
 /**
  * Story Viewer Screen
  *
@@ -14,6 +15,8 @@ import { StyleSheet, Text, View } from 'react-native';
  * - Child-friendly navigation between pages
  */
 export default function StoryScreen() {
+  return <Redirect href="/storybook" />;
+  
   return (
       <View style={styles.container}>
       <View style={styles.content}>
