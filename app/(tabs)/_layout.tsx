@@ -1,6 +1,7 @@
 import { Tabs } from 'expo-router';
 import React from 'react';
 
+import CustomTabIcon from '@/components/CustomTab';
 import { CustomLightTheme, CustomDarkTheme } from '@/constants/theme';
 import { useColorScheme } from '@/hooks/use-color-scheme';
 import { House, WandSparkles, Book, Gamepad2, Menu } from 'lucide-react-native';
@@ -56,9 +57,78 @@ function WithLucide() {
   );
 }
 
+function CustomTab() {
+  const colorScheme = useColorScheme();
+  const theme = colorScheme === 'dark' ? CustomDarkTheme : CustomLightTheme;
+
+  // Use a function to render the tabs with the theme applied
+  const renderTabs = () => (
+    <Tabs
+      screenOptions={{
+        tabBarActiveTintColor: theme.colors.primary,
+        headerShown: false,
+        tabBarShowLabel: false, // Hides the title label
+        // Set tabBarStyle background color if needed
+        // tabBarStyle: { backgroundColor: theme.colors.background },
+      }}>
+
+      {/* 2. Use CustomTabIcon for each screen */}
+      <Tabs.Screen
+        name="index"
+        options={{
+          title: 'Home',
+          tabBarIcon: ({ color, focused }: { color: string, focused: boolean }) => (
+            <CustomTabIcon name="index" color={color} focused={focused} />
+          ),
+        }}
+      />
+      <Tabs.Screen
+        name="game"
+        options={{
+          title: 'Game',
+          tabBarIcon: ({ color, focused }: { color: string, focused: boolean }) => (
+            <CustomTabIcon name="game" color={color} focused={focused} />
+          ),
+        }}
+      />
+      <Tabs.Screen
+        name="creation"
+        options={{
+          title: 'Creation',
+          tabBarIcon: ({ color, focused }: { color: string, focused: boolean }) => (
+            <CustomTabIcon name="creation" color={color} focused={focused} />
+          ),
+        }}
+      />
+      <Tabs.Screen
+        name="story"
+        options={{
+          title: 'Story',
+          tabBarIcon: ({ color, focused }: { color: string, focused: boolean }) => (
+            <CustomTabIcon name="story" color={color} focused={focused} />
+          ),
+        }}
+      />
+      <Tabs.Screen
+        name="menu"
+        options={{
+          title: 'All items',
+          tabBarIcon: ({ color, focused }: { color: string, focused: boolean }) => (
+            <CustomTabIcon name="menu" color={color} focused={focused} />
+          ),
+        }}
+      />
+    </Tabs>
+  );
+
+
+  return renderTabs();
+}
+
 export default function TabLayout() {
 
   return (
-    <WithLucide></WithLucide>
+    // <WithLucide></WithLucide>
+    <CustomTab></CustomTab>
   );
 }
