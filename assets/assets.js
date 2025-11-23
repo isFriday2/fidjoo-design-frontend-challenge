@@ -11,4 +11,8 @@ export const NavMenu = require('@/assets/icons/tab/menu.png')
 
 
 // home 
-export const HomeBanner = require("@/assets/header/Headerx2.png")
+export const HomeBanner = require("@/assets/header/banner.png")
+
+export const MascotteEdited = require("@/assets/images/mascotte/edited/mascot.png")
+
+export const IconStory2 = require('@/assets/icons/tab/wand2.png')

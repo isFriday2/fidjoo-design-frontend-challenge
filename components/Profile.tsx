@@ -2,11 +2,11 @@ import React from "react";
 // 1. You must import the Image component from react-native
 import { Image, StyleSheet, View, Text } from "react-native";
 
-import { useTheme } from '@react-navigation/native';
-import { AppTheme, ThemeColors } from '@/constants/theme';
 import { Paperclip,Zap } from "lucide-react-native";
 
 import { ThemedText } from "./ThemedText";
+import { useColorScheme } from '@/hooks/use-color-scheme';
+import { CustomDarkTheme, CustomLightTheme } from '@/constants/theme';
 
 
 export type ProfileDetailType = "name" | "icon" | "credit";
@@ -22,7 +22,8 @@ interface ProfileProps {
 // You need to destructure the 'detail' prop from the props object
 export default function Profile({ detail }: ProfileProps) {
 
-    const theme = useTheme() as AppTheme;
+    const colorScheme = useColorScheme();
+    const theme = colorScheme === 'dark' ? CustomDarkTheme : CustomLightTheme;
 
     // Assuming these paths are correct for your Expo project
     const userData = require('@/assets/data/child.json');
@@ -61,7 +62,7 @@ export default function Profile({ detail }: ProfileProps) {
         paperClip: {
             position:"absolute",
             top: -10,
-            right: 4,
+            right: 0,
             zIndex:1,
             
             
@@ -124,7 +125,8 @@ export default function Profile({ detail }: ProfileProps) {
                 }]}>
                     <View style={[{ display: "flex", flexDirection: "row", alignItems: "center", gap: 5 }, styles.roundedContainer, styles.shortShadow]}>
                         <Zap width={18} height={18} 
-                        fill={"#ffb71c"} stroke={"#ffb71c"}
+                        fill={theme.colors.tertiary} 
+                        stroke={theme.colors.tertiary}
                         style={[styles.zap]}/>
 
                         <ThemedText type="subtitle" weight="extrabold" color="text" >

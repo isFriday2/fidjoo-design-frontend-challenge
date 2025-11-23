@@ -1,6 +1,9 @@
 import { StyleSheet, Text, View, Image, Dimensions } from 'react-native';
 import { ThemedText } from '@/components/ThemedText';
+
+
 import Profile from '@/components/Profile';
+import CreateStoryButton from '@/components/CreateStoryButton';
 
 
 
@@ -14,6 +17,7 @@ return (
   <View style={styles.content}>
 
     <View style={{ display: "flex", flexDirection:'row', justifyContent:'space-between', alignItems: "center"}}>
+      {/* Show User's Profile */}
       <View>
         <ThemedText type='heading' weight='extrabold' color='text' style={styles.textStroke}>
           Hi, <Profile detail="name"/>
@@ -22,13 +26,11 @@ return (
         <Profile detail='credit'/>
 
       </View>
-      
-
       <Profile detail="icon"/>
-      
-
+    
     </View>
 
+    <CreateStoryButton/>
 
     <Text style={styles.title}>
       Home / Start Creation

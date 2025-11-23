@@ -19,7 +19,7 @@ export function ThemedText({
 
   const fontFamily =
     type === 'heading' || type === 'title' 
-    || type === 'subtitle'
+    || type === 'subtitle' || type ==='body'
       ? Fonts.heading[weight as keyof typeof Fonts.heading] || Fonts.heading.regular
       : Fonts.body[weight as keyof typeof Fonts.body] || Fonts.body.regular;
 

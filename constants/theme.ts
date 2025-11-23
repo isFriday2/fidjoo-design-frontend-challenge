@@ -59,7 +59,7 @@ export const CustomLightTheme: ExtendedTheme = {
     background: '#EDEBE5',
     card: '#F4F2EF',
     text: '#11181C',
-    border: '#9F9FA9',
+    border: '#E4E4E7',
     notification: '#ff3b30',
   },
   fonts: {
@@ -92,7 +92,7 @@ export const CustomDarkTheme: ExtendedTheme = {
     background: '#151718',
     card: '#151718',
     text: '#FFFFFF',
-    border: '#333',
+    border: '#E4E4E7',
     notification: '#ff453a',
   },
   fonts: {
