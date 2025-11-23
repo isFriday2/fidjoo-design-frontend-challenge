@@ -1,9 +1,10 @@
 import React from "react";
 // 1. You must import the Image component from react-native
-import { Image, StyleSheet, View } from "react-native";
-import { CustomLightTheme, CustomDarkTheme } from '@/constants/theme';
-import { useColorScheme } from '@/hooks/use-color-scheme';
+import { Image, StyleSheet, View, Text } from "react-native";
 
+import { useTheme } from '@react-navigation/native';
+import { AppTheme, ThemeColors } from '@/constants/theme';
+import { Paperclip } from "lucide-react-native";
 
 
 export type ProfileDetailType = "name" | "icon";
@@ -14,11 +15,12 @@ interface ProfileProps {
 }
 
 
+
+
 // You need to destructure the 'detail' prop from the props object
 export default function Profile({ detail }: ProfileProps) {
 
-      const colorScheme = useColorScheme();
-      const theme = colorScheme === 'dark' ? CustomDarkTheme : CustomLightTheme;
+    const theme = useTheme() as AppTheme;
 
     // Assuming these paths are correct for your Expo project
     const userData = require('@/assets/data/child.json');
@@ -33,7 +35,41 @@ export default function Profile({ detail }: ProfileProps) {
     // Store the avatar URL from the JSON object
     const avatarUrl = userAvatar ? userAvatar["url"] : null;
 
+    const styles = StyleSheet.create({
+        icon: {
+            width: 42,
+            height: 42,
+            borderRadius: 3, // Optional: Makes the image round
+        },
+        profileContainer: {
+            padding: 8,
+            backgroundColor:"white",
+            borderRadius: 5,
+            borderWidth: 1,
+            borderColor: theme.colors.border,
+            paddingBottom: 14,
 
+            shadowColor: theme.colors.border,
+            shadowOffset: { width: 0, height: 4 },
+            shadowRadius: 0,
+            shadowOpacity: 1,
+
+            transform : [{
+                rotate: "15deg",
+                
+            }],
+            overflow:"visible"
+        },
+
+        paperClip: {
+            position:"absolute",
+            top: -10,
+            right: 4,
+            zIndex:1,
+            
+            
+        }
+    });
     // 2. Use the switch statement to return the specific element based on 'detail'
     switch(detail) {
         case "name":
@@ -45,12 +81,14 @@ export default function Profile({ detail }: ProfileProps) {
             if (avatarUrl) {
                 return (
                     <View style={styles.profileContainer}>
+                        <Paperclip width={20} height={20} style={styles.paperClip}/>
                         <Image 
                             // Use the avatar URL for the source
                             source={{ uri: avatarUrl }}
                             // Apply the specified size via a style object
-                            style={[styles.icon, { borderColor: theme.colors.border}]}
+                            style={[styles.icon, {zIndex : 0}]}
                         />
+                        
                     </View>
                     
                 );
@@ -63,28 +101,6 @@ export default function Profile({ detail }: ProfileProps) {
             return null;
     }
 
-    // 3. The component should not have code outside of the switch block that
-    // tries to return based on the 'detail' prop. The final return is handled
-    // by the default case, or we can remove the final empty return.
-    
-    // Note: The code outside the switch/returns is unreachable if a case or default 
-    // is hit. We can remove the redundant final return, as the component's 
-    // functionality is covered above.
+
+
 }
-
-// Optional: Define a StyleSheet for better organization and performance
-const styles = StyleSheet.create({
-    icon: {
-        width: 42,
-        height: 42,
-        borderRadius: 3, // Optional: Makes the image round
-    },
-    profileContainer: {
-        padding: 8,
-        backgroundColor:"white",
-        borderRadius: 5,
-        borderWidth: 1,
-
-
-    },
-});

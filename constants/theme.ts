@@ -92,7 +92,7 @@ export const CustomDarkTheme: ExtendedTheme = {
     background: '#151718',
     card: '#151718',
     text: '#FFFFFF',
-    border: '#9F9FA9',
+    border: '#333',
     notification: '#ff453a',
   },
   fonts: {
