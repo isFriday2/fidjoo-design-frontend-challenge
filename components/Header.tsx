@@ -28,7 +28,7 @@ const styles = StyleSheet.create({
         zIndex:0,
         width:width,
         backgroundColor:'transparent',
-        height: 100,
+        height: width/(1638/471),
         justifyContent: 'flex-start',
     },
 

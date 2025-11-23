@@ -93,6 +93,7 @@ function CustomTab() {
         options={{
           title: '',
           header: () => <Header></Header>,
+          headerTransparent: true,
           tabBarIcon: ({ color, focused }: { color: string, focused: boolean }) => (
             <CustomTabIcon name="game" color={color} focused={focused} />
           ),
@@ -103,6 +104,7 @@ function CustomTab() {
         options={{
           title: '',
           header: () => <Header></Header>,
+          headerTransparent: true,
           tabBarIcon: ({ color, focused }: { color: string, focused: boolean }) => (
             <CustomTabIcon name="creation" color={color} focused={focused} />
           ),
@@ -113,6 +115,7 @@ function CustomTab() {
         options={{
           title: '',
           header: () => <Header></Header>,
+          headerTransparent: true,
           tabBarIcon: ({ color, focused }: { color: string, focused: boolean }) => (
             <CustomTabIcon name="story" color={color} focused={focused} />
           ),
@@ -123,6 +126,7 @@ function CustomTab() {
         options={{
           title: '',
           header: () => <Header></Header>,
+          headerTransparent: true,
           tabBarIcon: ({ color, focused }: { color: string, focused: boolean }) => (
             <CustomTabIcon name="menu" color={color} focused={focused} />
           ),

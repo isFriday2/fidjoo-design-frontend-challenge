@@ -1,6 +1,5 @@
 import { StyleSheet, Text, View, Image } from 'react-native';
-import { HomeBanner } from '@/assets/assets';
-import Header from '@/components/Header';
+import { ThemedText } from '@/components/ThemedText';
 
 /**
  * Home Screen - Start Creation
@@ -26,7 +25,9 @@ export default function HomeScreen() {
     <View style={styles.container}>
       <View style={styles.content}>
        
-
+        <ThemedText type='heading' weight='extrabold' color='text'>
+          Hi
+        </ThemedText>
         <Text style={styles.title}>
           Home / Start Creation
         </Text>

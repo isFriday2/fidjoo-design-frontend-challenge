@@ -23,11 +23,11 @@ export type BodyFontWeight = 'regular' | 'medium' | 'semibold' | 'bold';
 // Font mappings
 export const Fonts = {
   heading: {
-    regular: 'Baloo-Regular',
-    medium: 'Baloo-Medium',
-    semibold: 'Baloo-SemiBold',
-    bold: 'Baloo-Bold',
-    extrabold: 'Baloo-ExtraBold',
+    regular: 'Baloo2-Regular',
+    medium: 'Baloo2-Medium',
+    semibold: 'Baloo2-SemiBold',
+    bold: 'Baloo2-Bold',
+    extrabold: 'Baloo2-ExtraBold',
   },
   body: {
     regular: 'Raleway-Regular',
