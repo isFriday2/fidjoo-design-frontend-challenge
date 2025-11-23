@@ -18,14 +18,15 @@ export function ThemedText({
   const theme = useTheme() as AppTheme;
 
   const fontFamily =
-    type === 'heading' || type === 'title'
+    type === 'heading' || type === 'title' 
+    || type === 'subtitle'
       ? Fonts.heading[weight as keyof typeof Fonts.heading] || Fonts.heading.regular
       : Fonts.body[weight as keyof typeof Fonts.body] || Fonts.body.regular;
 
   const fontSize = {
     heading: 28,
     title: 24,
-    subtitle: 18,
+    subtitle: 20,
     body: 16,
     caption: 14,
   }[type];

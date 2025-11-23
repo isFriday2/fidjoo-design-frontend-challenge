@@ -13,10 +13,16 @@ return (
 <View style={styles.container}>
   <View style={styles.content}>
 
-    <View style={{ display: "flex", flexDirection:'row', justifyContent:'space-between'}}>
-      <ThemedText type='heading' weight='extrabold' color='text' style={styles.textStroke}>
-        Hi, <Profile detail="name"/>
-      </ThemedText>
+    <View style={{ display: "flex", flexDirection:'row', justifyContent:'space-between', alignItems: "center"}}>
+      <View>
+        <ThemedText type='heading' weight='extrabold' color='text' style={styles.textStroke}>
+          Hi, <Profile detail="name"/>
+        </ThemedText>
+
+        <Profile detail='credit'/>
+
+      </View>
+      
 
       <Profile detail="icon"/>
       

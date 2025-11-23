@@ -4,10 +4,12 @@ import { Image, StyleSheet, View, Text } from "react-native";
 
 import { useTheme } from '@react-navigation/native';
 import { AppTheme, ThemeColors } from '@/constants/theme';
-import { Paperclip } from "lucide-react-native";
+import { Paperclip,Zap } from "lucide-react-native";
+
+import { ThemedText } from "./ThemedText";
 
 
-export type ProfileDetailType = "name" | "icon";
+export type ProfileDetailType = "name" | "icon" | "credit";
 
 // 2. Define the Props Interface for the component
 interface ProfileProps {
@@ -43,17 +45,12 @@ export default function Profile({ detail }: ProfileProps) {
         },
         profileContainer: {
             padding: 8,
+            height: 65,
             backgroundColor:"white",
             borderRadius: 5,
             borderWidth: 1,
             borderColor: theme.colors.border,
-            paddingBottom: 14,
-
-            shadowColor: theme.colors.border,
-            shadowOffset: { width: 0, height: 4 },
-            shadowRadius: 0,
-            shadowOpacity: 1,
-
+            // paddingBottom: ,
             transform : [{
                 rotate: "15deg",
                 
@@ -68,6 +65,30 @@ export default function Profile({ detail }: ProfileProps) {
             zIndex:1,
             
             
+        },
+
+        zap: {
+     
+
+        },
+        roundedContainer :{
+            backgroundColor:"white",
+            borderRadius:30,
+            borderWidth: 1,
+            borderColor: theme.colors.border,
+            padding: 3,
+            paddingRight:15,
+            paddingLeft:10,
+            justifyContent:"center",
+            alignItems: "center"
+        },
+
+        shortShadow : {
+            shadowColor: theme.colors.border,
+            shadowOffset: { width: 0, height: 4 },
+            shadowRadius: 0,
+            shadowOpacity: 1,
+
         }
     });
     // 2. Use the switch statement to return the specific element based on 'detail'
@@ -80,7 +101,7 @@ export default function Profile({ detail }: ProfileProps) {
             // Return the JSX element for the Image
             if (avatarUrl) {
                 return (
-                    <View style={styles.profileContainer}>
+                    <View style={[styles.shortShadow, styles.profileContainer]}>
                         <Paperclip width={20} height={20} style={styles.paperClip}/>
                         <Image 
                             // Use the avatar URL for the source
@@ -95,6 +116,25 @@ export default function Profile({ detail }: ProfileProps) {
             }
             // Fallback if the URL isn't found
             return null; 
+
+        case "credit":
+            return (
+                <View style={[{
+                    alignItems: "flex-start"
+                }]}>
+                    <View style={[{ display: "flex", flexDirection: "row", alignItems: "center", gap: 5 }, styles.roundedContainer, styles.shortShadow]}>
+                        <Zap width={18} height={18} 
+                        fill={"#ffb71c"} stroke={"#ffb71c"}
+                        style={[styles.zap]}/>
+
+                        <ThemedText type="subtitle" weight="extrabold" color="text" >
+                        
+                            {user1["credits"]}
+                        </ThemedText>
+                    </View>
+                </View>
+               
+            )
             
         default:
             // Optional: return null or a default element if 'detail' is not recognized

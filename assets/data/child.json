@@ -8,6 +8,8 @@
         "first_name": "Jean-Sébastien",
         "birthdate": "2015-02-11",
         "avatar": 1,
-        "gender": "m"
+        "gender": "m",
+        "credits": 36
     }
+    
 ]
