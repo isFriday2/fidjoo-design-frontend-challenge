@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import { View, Text, Button, StyleSheet } from 'react-native';
 import { useRouter, useFocusEffect } from 'expo-router'; 
-import { useNavigation } from '@react-navigation/native';
-import { Stack } from 'expo-router'; // Only used if you want to set dynamic header options.
+import { useNavigation } from '@react-navigation/native'
 
 // Define the steps (pages) for clarity
 type CreationStep = 'THEME' | 'HEROES' | 'BRAVO';
