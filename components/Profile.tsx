@@ -1,6 +1,9 @@
 import React from "react";
 // 1. You must import the Image component from react-native
-import { Image, StyleSheet } from "react-native";
+import { Image, StyleSheet, View } from "react-native";
+import { CustomLightTheme, CustomDarkTheme } from '@/constants/theme';
+import { useColorScheme } from '@/hooks/use-color-scheme';
+
 
 
 export type ProfileDetailType = "name" | "icon";
@@ -13,6 +16,9 @@ interface ProfileProps {
 
 // You need to destructure the 'detail' prop from the props object
 export default function Profile({ detail }: ProfileProps) {
+
+      const colorScheme = useColorScheme();
+      const theme = colorScheme === 'dark' ? CustomDarkTheme : CustomLightTheme;
 
     // Assuming these paths are correct for your Expo project
     const userData = require('@/assets/data/child.json');
@@ -38,12 +44,15 @@ export default function Profile({ detail }: ProfileProps) {
             // Return the JSX element for the Image
             if (avatarUrl) {
                 return (
-                    <Image 
-                        // Use the avatar URL for the source
-                        source={{ uri: avatarUrl }}
-                        // Apply the specified size via a style object
-                        style={styles.icon}
-                    />
+                    <View style={styles.profileContainer}>
+                        <Image 
+                            // Use the avatar URL for the source
+                            source={{ uri: avatarUrl }}
+                            // Apply the specified size via a style object
+                            style={[styles.icon, { borderColor: theme.colors.border}]}
+                        />
+                    </View>
+                    
                 );
             }
             // Fallback if the URL isn't found
@@ -68,6 +77,14 @@ const styles = StyleSheet.create({
     icon: {
         width: 42,
         height: 42,
-        borderRadius: 21, // Optional: Makes the image round
+        borderRadius: 3, // Optional: Makes the image round
+    },
+    profileContainer: {
+        padding: 8,
+        backgroundColor:"white",
+        borderRadius: 5,
+        borderWidth: 1,
+
+
     },
 });

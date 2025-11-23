@@ -47,6 +47,7 @@ export type AppFonts = {
   body: { [K in BodyFontWeight]: (typeof Fonts)['body'][K] };
 };
 
+
 // Thème personnalisé pour React Navigation
 export const CustomLightTheme: ExtendedTheme = {
   ...DefaultTheme,
@@ -58,7 +59,7 @@ export const CustomLightTheme: ExtendedTheme = {
     background: '#EDEBE5',
     card: '#F4F2EF',
     text: '#11181C',
-    border: '#ddd',
+    border: '#9F9FA9',
     notification: '#ff3b30',
   },
   fonts: {
@@ -91,7 +92,7 @@ export const CustomDarkTheme: ExtendedTheme = {
     background: '#151718',
     card: '#151718',
     text: '#FFFFFF',
-    border: '#333',
+    border: '#9F9FA9',
     notification: '#ff453a',
   },
   fonts: {

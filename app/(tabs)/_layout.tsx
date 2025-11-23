@@ -2,16 +2,16 @@ import { Tabs } from 'expo-router';
 import React from 'react';
 
 import CustomTabIcon from '@/components/CustomTab';
-import { CustomLightTheme, CustomDarkTheme } from '@/constants/theme';
-import { useColorScheme } from '@/hooks/use-color-scheme';
+import { AppTheme } from '@/constants/theme';
+
 import { House, WandSparkles, Book, Gamepad2, Menu } from 'lucide-react-native';
-import { Image, StyleSheet } from 'react-native';
+
 import Header from '@/components/Header';
+import { useTheme } from '@react-navigation/native';
 
 
 function WithLucide() {
-  const colorScheme = useColorScheme();
-  const theme = colorScheme === 'dark' ? CustomDarkTheme : CustomLightTheme;
+  const theme = useTheme() as AppTheme;
 
   return (
     <Tabs
@@ -61,8 +61,8 @@ function WithLucide() {
 }
 
 function CustomTab() {
-  const colorScheme = useColorScheme();
-  const theme = colorScheme === 'dark' ? CustomDarkTheme : CustomLightTheme;
+
+  const theme = useTheme() as AppTheme;
 
   // Use a function to render the tabs with the theme applied
   const renderTabs = () => (

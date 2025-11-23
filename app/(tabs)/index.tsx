@@ -13,11 +13,12 @@ return (
 <View style={styles.container}>
   <View style={styles.content}>
 
-    <View>
+    <View style={{ display: "flex", flexDirection:'row', justifyContent:'space-between'}}>
       <ThemedText type='heading' weight='extrabold' color='text' style={styles.textStroke}>
         Hi, <Profile detail="name"/>
       </ThemedText>
 
+      <Profile detail="icon"/>
       
 
     </View>
