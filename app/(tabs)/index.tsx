@@ -1,70 +1,67 @@
-import { StyleSheet, Text, View, Image } from 'react-native';
+import { StyleSheet, Text, View, Image, Dimensions } from 'react-native';
 import { ThemedText } from '@/components/ThemedText';
+import Profile from '@/components/Profile';
 
-/**
- * Home Screen - Start Creation
- *
- * TODO: Implement the UI for:
- * - Display child's profile (name + avatar)
- * - Show previously generated stories as visual cards
- * - Central CTA button to start generating a new story
- *
- * Optional bonuses:
- * - Profile editing
- * - Games button with modal
- * - Credit balance → credit shop with parental gate
- *
- * Requirements:
- * - Use data from: /assets/data/child.json (child info)
- * - Use data from: /assets/data/avatars.json (avatar images)
- * - Use data from: /assets/data/book.json (previous stories)
- * - Child-friendly UI
- */
+
+
+const { width } = Dimensions.get('window');
+
 export default function HomeScreen() {
-  return (
-    <View style={styles.container}>
-      <View style={styles.content}>
-       
-        <ThemedText type='heading' weight='extrabold' color='text'>
-          Hi
-        </ThemedText>
-        <Text style={styles.title}>
-          Home / Start Creation
-        </Text>
-        <Text style={styles.description}>
-          This is the main screen where children will:
-        </Text>
-        <Text style={styles.step}>👤 See their profile (name + avatar)</Text>
-        <Text style={styles.step}>📚 Browse their story collection</Text>
-        <Text style={styles.step}>✨ Start creating a new story</Text>
-        <View style={styles.dataInfo}>
-          <Text style={styles.dataText}>
-            📁 Data available in:
-                </Text>
-          <Text style={styles.dataText}>
-            • /assets/data/child.json (child info)
-          </Text>
-          <Text style={styles.dataText}>
-            • /assets/data/avatars.json (avatar images)
-          </Text>
-          <Text style={styles.dataText}>
-            • /assets/data/book.json (example story)
-          </Text>
-        </View>
-      </View>
+
+
+return (
+<View style={styles.container}>
+  <View style={styles.content}>
+
+    <View>
+      <ThemedText type='heading' weight='extrabold' color='text' style={styles.textStroke}>
+        Hi, <Profile detail="name"/>
+      </ThemedText>
+
+      
+
     </View>
-  );
+
+
+    <Text style={styles.title}>
+      Home / Start Creation
+    </Text>
+    <Text style={styles.description}>
+      This is the main screen where children will:
+    </Text>
+    <Text style={styles.step}>👤 See their profile (name + avatar)</Text>
+    <Text style={styles.step}>📚 Browse their story collection</Text>
+    <Text style={styles.step}>✨ Start creating a new story</Text>
+    <View style={styles.dataInfo}>
+      <Text style={styles.dataText}>
+        📁 Data available in:
+      </Text>
+      <Text style={styles.dataText}>
+        • /assets/data/child.json (child info)
+      </Text>
+      <Text style={styles.dataText}>
+        • /assets/data/avatars.json (avatar images)
+      </Text>
+      <Text style={styles.dataText}>
+        • /assets/data/book.json (example story)
+      </Text>
+    </View>
+  </View>
+</View>
+);
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    zIndex: 1,
   },
   content: {
     flex: 1,
     padding: 32,
+    paddingTop: width/(1638/471)/1.7,
     gap: 16,
-    justifyContent: 'center',
+    justifyContent: 'flex-start',
   },
   title: {
     marginBottom: 16,
@@ -89,11 +86,15 @@ const styles = StyleSheet.create({
     fontStyle: 'italic',
     marginBottom: 4,
   },
-  banner :{
-    width: "100%",
-    position:"absolute",
-    top:0,
-    left:0,
-    resizeMode: 'contain'
+  textStroke : {
+    textShadowColor: 'white',
+    textShadowOffset: { width: 3, height: 0 },
+    textShadowRadius: 0,
+
+    shadowColor: 'white',
+    shadowRadius: 0,
+    shadowOpacity: 1,
+    shadowOffset: { width: -2, height: -2.5 },
+
   }
 });

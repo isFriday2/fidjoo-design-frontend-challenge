@@ -23,7 +23,7 @@ export function ThemedText({
       : Fonts.body[weight as keyof typeof Fonts.body] || Fonts.body.regular;
 
   const fontSize = {
-    heading: 32,
+    heading: 28,
     title: 24,
     subtitle: 18,
     body: 16,
