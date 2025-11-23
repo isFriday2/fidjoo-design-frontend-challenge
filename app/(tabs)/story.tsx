@@ -1,5 +1,5 @@
-import { StyleSheet, Text, View } from 'react-native';
-import { Redirect } from 'expo-router';
+import { Button, StyleSheet, Text, View } from 'react-native';
+import { Redirect, useRouter } from 'expo-router';
 import React from 'react';
 /**
  * Story Viewer Screen
@@ -15,7 +15,15 @@ import React from 'react';
  * - Child-friendly navigation between pages
  */
 export default function StoryScreen() {
-  return <Redirect href="/storybook" />;
+    const router = useRouter();
+  
+    const handleReturnToTabs = () => {
+      // Explicitly navigate back to the Home tab to exit the stack cleanly
+      router.push('/storybook'); 
+    };
+
+
+  // return <Redirect href="/storybook" />;
   
   return (
       <View style={styles.container}>
@@ -31,15 +39,11 @@ export default function StoryScreen() {
         <Text style={styles.step}>🎬 Watch animated videos</Text>
         <Text style={styles.step}>⬅️➡️ Navigate between pages</Text>
         <View style={styles.dataInfo}>
-          <Text style={styles.dataText}>
-            📁 Data available in:
-          </Text>
-          <Text style={styles.dataText}>
-            • /assets/data/book.json (book metadata)
-          </Text>
-          <Text style={styles.dataText}>
-            • /assets/data/book_pages.json (10 pages with text, audio, video)
-            </Text>
+          <Button 
+            title="Open Storybook"
+            onPress={handleReturnToTabs}
+          />
+     
         </View>
       </View>
     </View>

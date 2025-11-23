@@ -16,6 +16,8 @@ export default function RootLayout() {
       <Stack>
         <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
         <Stack.Screen name="storycreation" options={{ headerShown: false }} />
+        <Stack.Screen name="storybook" options={{ headerShown: false }} />
+
       </Stack>
     </ThemeProvider>
   );
