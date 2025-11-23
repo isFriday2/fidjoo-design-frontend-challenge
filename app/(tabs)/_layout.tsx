@@ -23,14 +23,14 @@ function WithLucide() {
       <Tabs.Screen
         name="index"
         options={{
-          title: 'Home',
+          title: 'home',
           tabBarIcon: ({ color }: { color: string }) => <House size={28} color={color} />,
         }}
       />
       <Tabs.Screen
         name="game"
         options={{
-          title: 'Game',
+          title: 'game',
           tabBarIcon: ({ color }: { color: string }) => <Gamepad2 size={28} color={color} />,
         }}
       />
