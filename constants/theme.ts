@@ -6,6 +6,7 @@ export interface ExtendedTheme extends Theme {
   colors: Theme['colors'] & {
     secondary: string;
     tertiary: string;
+    shadow: string;
   };
 }
 
@@ -61,6 +62,7 @@ export const CustomLightTheme: ExtendedTheme = {
     text: '#11181C',
     border: '#E4E4E7',
     notification: '#ff3b30',
+    shadow:"#2A608F",
   },
   fonts: {
     regular: {
@@ -94,6 +96,7 @@ export const CustomDarkTheme: ExtendedTheme = {
     text: '#FFFFFF',
     border: '#E4E4E7',
     notification: '#ff453a',
+    shadow:"#2A608F",
   },
   fonts: {
     regular: {

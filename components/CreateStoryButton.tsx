@@ -19,13 +19,21 @@ export default function CreateStoryButton() {
             padding:20,
             borderRadius: 15,
             backgroundColor: theme.colors.primary
+        },
+        largeShadow :{
+            shadowColor: theme.colors.shadow,
+            shadowOffset: { width: 0, height: 6 },
+            shadowRadius: 0,
+            shadowOpacity: 1,
+            borderColor: theme.colors.shadow,
+            borderWidth: 2
         }
     })
     return (
         <View>
-            <ThemedView backgroundColor="primary" style={[{
+            <ThemedView style={[{
                 display:"flex", flexDirection:"row", 
-                }, styles.button]} >
+                }, styles.button, styles.largeShadow]} >
                 <View style={{
                     display:"flex", flexDirection:"column", gap: 5
                 }}>
