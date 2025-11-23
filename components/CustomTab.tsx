@@ -1,5 +1,5 @@
 import React from 'react';
-import { NavIndex, NavGame, NavCreation, NavStory, NavMenu } from '@/assets/icons/tab/icons';
+import { NavIndex, NavGame, NavCreation, NavStory, NavMenu } from '@/assets/assets';
 import { View, Image, StyleSheet, ImageSourcePropType } from 'react-native';
 
 // Define the mapping of tab names to your icon assets

@@ -1,4 +1,6 @@
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, Image } from 'react-native';
+import { HomeBanner } from '@/assets/assets';
+import Header from '@/components/Header';
 
 /**
  * Home Screen - Start Creation
@@ -23,6 +25,8 @@ export default function HomeScreen() {
   return (
     <View style={styles.container}>
       <View style={styles.content}>
+       
+
         <Text style={styles.title}>
           Home / Start Creation
         </Text>
@@ -84,4 +88,11 @@ const styles = StyleSheet.create({
     fontStyle: 'italic',
     marginBottom: 4,
   },
+  banner :{
+    width: "100%",
+    position:"absolute",
+    top:0,
+    left:0,
+    resizeMode: 'contain'
+  }
 });
