@@ -1,10 +1,13 @@
 import { StyleSheet, Text, View, Image, Dimensions, Pressable } from 'react-native';
 
-import { ThemedText } from '@/components/ThemedText';
 import { ChevronRight } from 'lucide-react-native';
+
+import { ThemedText } from '@/components/ThemedText';
 import Profile from '@/components/Profile';
 import CreateStoryButton from '@/components/CreateStoryButton';
-import { useNavigation } from "@react-navigation/native"; // 3. Import useNavigation
+import Book from '@/components/Book';
+
+import { useNavigation } from "@react-navigation/native";
 
 import { useColorScheme } from '@/hooks/use-color-scheme';
 import { CustomDarkTheme, CustomLightTheme } from '@/constants/theme';
@@ -68,6 +71,19 @@ export default function HomeScreen() {
       flexDirection:'row', 
       justifyContent:'space-between', 
       alignItems: "center"
+    },
+    bookshelf: {
+      display:"flex", 
+      flexDirection:"column", 
+      padding:20, 
+      borderRadius: 15,
+      backgroundColor: 'rgba(73, 170, 255, 0.1)',
+    },
+    bookshelfContainer :{
+      padding:20,
+      borderRadius: 13,
+      backgroundColor: 'rgba(73, 170, 255, 0.2)',
+
     }
   });
   
@@ -98,7 +114,11 @@ export default function HomeScreen() {
 
       <CreateStoryButton/>
 
-      <View>
+      <View style={{
+        display : "flex",
+        flexDirection: "column",
+        gap: 5
+      }}>
         <View style={styles.flexBox}>
           <ThemedText type='title' weight='extrabold' >
             Mon Livre
@@ -115,30 +135,14 @@ export default function HomeScreen() {
           </Pressable>
           
         </View>
+        <View style={styles.bookshelf}>
+          <View style={styles.bookshelfContainer}>
+            <Book/>
+          </View>
+        </View>
+        
       </View>
-      <Text style={styles.title}>
-        Home / Start Creation
-      </Text>
-      <Text style={styles.description}>
-        This is the main screen where children will:
-      </Text>
-      <Text style={styles.step}>👤 See their profile (name + avatar)</Text>
-      <Text style={styles.step}>📚 Browse their story collection</Text>
-      <Text style={styles.step}>✨ Start creating a new story</Text>
-      <View style={styles.dataInfo}>
-        <Text style={styles.dataText}>
-          📁 Data available in:
-        </Text>
-        <Text style={styles.dataText}>
-          • /assets/data/child.json (child info)
-        </Text>
-        <Text style={styles.dataText}>
-          • /assets/data/avatars.json (avatar images)
-        </Text>
-        <Text style={styles.dataText}>
-          • /assets/data/book.json (example story)
-        </Text>
-      </View>
+
     </View>
   </View>
   );
