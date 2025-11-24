@@ -9,7 +9,7 @@ export default function StoryBookStackLayout() {
         name="index"
         options={{
       
-          title: 'StoryBook', 
+          title: 'The Sweet Quest of Prince Chocolat and Glim', 
         }}
       />
 
