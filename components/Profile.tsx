@@ -1,5 +1,4 @@
 import React from "react";
-// 1. You must import the Image component from react-native
 import { Image, StyleSheet, View, Text } from "react-native";
 
 import { Paperclip,Zap } from "lucide-react-native";
@@ -11,28 +10,21 @@ import { CustomDarkTheme, CustomLightTheme } from '@/constants/theme';
 
 export type ProfileDetailType = "name" | "icon" | "credit";
 
-// 2. Define the Props Interface for the component
+// Define the Props Interface for the component
 interface ProfileProps {
     detail: ProfileDetailType;
 }
 
 
-
-
-// You need to destructure the 'detail' prop from the props object
 export default function Profile({ detail }: ProfileProps) {
 
     const colorScheme = useColorScheme();
     const theme = colorScheme === 'dark' ? CustomDarkTheme : CustomLightTheme;
 
-    // Assuming these paths are correct for your Expo project
     const userData = require('@/assets/data/child.json');
-    // Assuming 'child.json' is an array and you want the first element
     const user1 = userData[0]; 
 
     const avatars = require('@/assets/data/avatars.json');
-    
-    // Assuming user1["avatar"] is the index (1-based) to find the avatar object
     const userAvatar = avatars[user1["avatar"] - 1];
     
     // Store the avatar URL from the JSON object
@@ -42,7 +34,7 @@ export default function Profile({ detail }: ProfileProps) {
         icon: {
             width: 42,
             height: 42,
-            borderRadius: 3, // Optional: Makes the image round
+            borderRadius: 3, 
         },
         profileContainer: {
             padding: 8,
@@ -51,7 +43,6 @@ export default function Profile({ detail }: ProfileProps) {
             borderRadius: 5,
             borderWidth: 1,
             borderColor: theme.colors.border,
-            // paddingBottom: ,
             transform : [{
                 rotate: "15deg",
                 
@@ -92,7 +83,7 @@ export default function Profile({ detail }: ProfileProps) {
 
         }
     });
-    // 2. Use the switch statement to return the specific element based on 'detail'
+    // Use the switch statement to return the specific element based on 'detail'
     switch(detail) {
         case "name":
             // Return the name string
@@ -105,9 +96,7 @@ export default function Profile({ detail }: ProfileProps) {
                     <View style={[styles.shortShadow, styles.profileContainer]}>
                         <Paperclip width={20} height={20} style={styles.paperClip}/>
                         <Image 
-                            // Use the avatar URL for the source
                             source={{ uri: avatarUrl }}
-                            // Apply the specified size via a style object
                             style={[styles.icon, {zIndex : 0}]}
                         />
                         
@@ -139,7 +128,6 @@ export default function Profile({ detail }: ProfileProps) {
             )
             
         default:
-            // Optional: return null or a default element if 'detail' is not recognized
             return null;
     }
 

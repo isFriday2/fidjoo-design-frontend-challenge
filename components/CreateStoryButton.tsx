@@ -3,25 +3,23 @@ import {
   View,
   Image,
   StyleSheet,
-  Pressable, // 2. Import Pressable
+  Pressable,
 } from "react-native";
 import { MascotteEdited, IconStory2 } from "@/assets/assets";
 import { ThemedText } from "./ThemedText";
-import { useNavigation } from "@react-navigation/native"; // 3. Import useNavigation
-
+import { useNavigation } from "@react-navigation/native"; 
 import { useColorScheme } from '@/hooks/use-color-scheme';
 import { CustomDarkTheme, CustomLightTheme } from '@/constants/theme';
 
 export default function CreateStoryButton() {
-    // Hooks
-    const navigation = useNavigation(); // 4. Initialize navigation
-    const [isPressed, setIsPressed] = useState(false); // 5. State for press effect
 
+    const navigation = useNavigation(); 
+    const [isPressed, setIsPressed] = useState(false); 
     const colorScheme = useColorScheme();
     const theme = colorScheme === 'dark' ? CustomDarkTheme : CustomLightTheme;
 
-    // Define the base shadow height
-    const shadowHeight = 6;
+
+    // const shadowHeight = 6;
 
     const styles = StyleSheet.create({
         // Base button style
@@ -43,14 +41,12 @@ export default function CreateStoryButton() {
             shadowOpacity: 1,
             borderColor: theme.colors.shadow,
             borderWidth: 2,
-            // You can add elevation for Android here if needed
             // elevation: shadowHeight, 
         },
         // Pressed shadow style (zero height)
         pressedShadow: {
-            shadowOffset: { width: 0, height: 0 }, // Height is zero when pressed
+            shadowOffset: { width: 0, height: 0 }, 
             shadowRadius: 0,
-            // You might want to offset the container itself for the "push-down" effect
             transform: [{ translateY: 2 }],
         },
     });
@@ -69,15 +65,9 @@ export default function CreateStoryButton() {
                 style={[
                     styles.button,
                     styles.largeShadow,
-                    // Apply pressedShadow style ONLY when isPressed is true
                     isPressed && styles.pressedShadow,
                 ]}
             >
-                {/* The content is placed directly inside Pressable. 
-                  We don't need ThemedView since we are applying all styles directly to Pressable 
-                  and handling the theme color (backgroundColor) in the StyleSheet.
-                  The ThemedText components handle their own colors.
-                */}
                 <View
                     style={{
                         display: "flex",
@@ -98,7 +88,7 @@ export default function CreateStoryButton() {
                         type="body"
                         weight="extrabold"
                         color="card"
-                        style={{ opacity: 0.5 }} // Use opacity: 0.5 instead of opacity: 50
+                        style={{ opacity: 0.5 }} 
                     >
                         1 Crédit
                     </ThemedText>

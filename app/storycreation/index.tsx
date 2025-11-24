@@ -89,13 +89,13 @@ export default function CreationStepperScreen() {
   useFocusEffect(
     React.useCallback(() => {
       let title = '';
-      if (currentStep === 'THEME') {
-        title = '1. Select Theme';
-      } else if (currentStep === 'HEROES') {
-        title = '2. Select Heroes';
-      } else {
-        title = 'Bravo!';
-      }
+      // if (currentStep === 'THEME') {
+      //   title = '1. Select Theme';
+      // } else if (currentStep === 'HEROES') {
+      //   title = '2. Select Heroes';
+      // } else {
+      //   title = 'Bravo!';
+      // }
       navigation.setOptions({ title }); 
     }, [currentStep, navigation])
   );

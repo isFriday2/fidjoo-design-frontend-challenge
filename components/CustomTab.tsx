@@ -2,7 +2,7 @@ import React from 'react';
 import { NavIndex, NavGame, NavCreation, NavStory, NavMenu } from '@/assets/assets';
 import { View, Image, StyleSheet, ImageSourcePropType } from 'react-native';
 
-// Define the mapping of tab names to your icon assets
+// Define the mapping of tab names to icon assets
 const ICON_MAP: { [key: string]: ImageSourcePropType } = {
   index: NavIndex,
   game: NavGame,
@@ -12,7 +12,7 @@ const ICON_MAP: { [key: string]: ImageSourcePropType } = {
 };
 
 interface CustomTabIconProps {
-  name: string; // Corresponds to the Tabs.Screen 'name'
+  name: string;
   color: string;
   focused: boolean;
 }
@@ -28,7 +28,7 @@ export default function CustomTabIcon({ name, color, focused }: CustomTabIconPro
         <View style={[styles.focusLine, { backgroundColor: color }]} />
       )}
       
-      {/* 2. Custom Icon Image */}
+      {/* 2. Icon Image */}
       <Image
         source={iconSource}
         style={[
@@ -47,16 +47,15 @@ const styles = StyleSheet.create({
     width: '100%',
   },
   focusLine: {
-    position: 'absolute', // Position the line at the top
+    position: 'absolute', 
     top: 0,
     width: '100%', 
-    height: 5, // Thickness of the line
+    height: 5, 
     borderRadius: 1.5,
   },
   icon: {
     width: 28,
     height: 28,
-    // Shift icon down slightly to account for the focus line
     marginTop: 25, 
   },
 });
