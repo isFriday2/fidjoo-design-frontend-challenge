@@ -1,3 +1,71 @@
+
+# Design Decisions
+
+## Overview
+Thank you very much for the opportunity to participate in this design brief. I genuinely appreciate the ambition of FIDJOO's vision.
+
+However, after carefully reviewing the project scope in conjunction with the proposed 7-day timeframe for both design implementation and coding, I must be transparent and address the timeline. Achieving all remaining requirements, along with the development, will be extremely challenging within just one week.
+
+Based on the robust components already implemented, I am confident that you have a clear understanding of my technical capabilities and the level of quality you can expect for the remainder of the project.
+
+### ✅ Work Completed
+The following key items are already complete and adhere closely to my prototype design:
+
+- Home page styling
+- Themed Button styling
+- Tab bar styling
+- Tab bar navigation and stack page navigations (core routing structure)
+- Story creation first page (initial step)
+
+### Link to The Figma Prototype
+https://www.figma.com/proto/HQI0wl6WCwSo8nOofl9Ljw/FIDJOO?node-id=1-2&viewport=1495%2C561%2C0.7&t=79tUHxOW6s6mc6pB-0&scaling=scale-down&content-scaling=fixed&starting-point-node-id=1%3A2&show-proto-sidebar=1
+
+
+## 1. User Experience (UX) Principles
+- The interface follows a simple, structured flow tailored for children.
+- Each screen presents one primary action, reducing cognitive load and supporting intuitive navigation.
+- Large visuals (story covers, characters, adventures) guide users through choices with minimal text dependency.
+- A clear progress bar reinforces the step-by-step journey.
+
+## 2. Child-Targeted Design
+- Bright colors, rounded shapes, and expressive illustrations create a playful and welcoming environment for young users.
+- The large visual cards minimize the need for reading proficiency.
+- Friendly iconography in the navigation encourages exploration and helps children recognize functions visually.
+
+## 3. Accessibility and Ease of Use
+- Large, high-contrast buttons ensure children—and users inclusively.
+- Adequate spacing reduces accidental taps. The text is short, straightforward, and combined with large imagery to support early readers and multilingual households.
+
+## 4. Engagement and Motivation
+- The design incorporates encouraging reinforcement screens such as reading streaks (e.g., "10 days of reading!") and completion celebrations.
+- These provide immediate positive feedback, boosting motivation and forming healthy reading habits.
+- The creation flow is framed as a fun, empowering activity.
+
+## 5. Mascot and Branding Integration
+- The mascot acts as a consistent emotional guide across the experience. It appears in creation prompts, confirmation dialogs, and celebration screens.
+- Its simple shape and expressive eyes foster emotional connection and make the brand memorable and inclusive.
+
+## 6. Safety and Emotional Design
+- Confirmation prompts use gentle emotional cues (such as the sad mascot) to communicate possible loss of progress without inducing fear.
+- Buttons are clearly differentiated by color and tone—for example, blue for a safe choice, red for a potentially destructive action.
+
+## 7. Information Architecture
+- The home screen is organised into clear sections like "Tous," "Préférée," and "Inachevée" to help both children and parents locate content quickly.
+- The library grid intentionally mimics the familiar look of a bookshelf. Each book cover is placed inside a soft rectangular frame that resembles a book, helping children intuitively understand that these are their stored stories.
+- The CTA "+ Create Story" card remains visually prominent to encourage ongoing creativity.
+
+## 8. Notes on Animation (Future Work)
+**Due to time limitations**, animations are not implemented yet. Future versions could include micro-interactions (button bounce, mascot movements, transitions) to further support engagement, delight, and comprehension without overwhelming the child.
+
+## 9.Attribution & Ownership Notice
+This design and its associated code were created specifically for the purposes of the provided design brief. If this work is not selected for the final product, I kindly ask that we have a conversation before any part of this work is reused. I would truly appreciate being credited appropriately and ensuring that any reuse aligns with our mutual understanding.
+
+**Thank you for your consideration, professionalism and for acknowledging the creative effort behind this project.**
+
+----------------------------------------------------------ORIGINAL README-----------------------------------------------------------
+
+
+
 # Fidjoo – Design + Frontend Mini-Challenge
 
 ## Welcome 👋
