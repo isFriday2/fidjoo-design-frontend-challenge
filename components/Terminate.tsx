@@ -1,25 +1,32 @@
 import React, { useState } from 'react';
-import { StyleSheet, View, Text, TouchableOpacity, Modal } from 'react-native';
+import { StyleSheet, View, Text, TouchableOpacity, Modal, Image } from 'react-native';
+
+import { LogOut, X } from 'lucide-react-native';
+
+import { useColorScheme } from '@/hooks/use-color-scheme';
+import { CustomDarkTheme, CustomLightTheme } from '@/constants/theme';
+
+import { SadMascot } from '@/assets/assets';
+import { ThemedText } from './ThemedText';
+import { ThemedButton } from './ThemedButton';
+import { useRouter } from 'expo-router';
 
 
-const mockRouter = {
-    push: (path: any) => {
 
-        console.log(`Action: Confirmed! Navigating to Home Page (${path}).`);
-    }
-};
-
-const Terminate = () => {
+export default function Terminate() {
     const [showPrompt, setShowPrompt] = useState(false);
+    const router = useRouter();
+   
     
 
-    const router = mockRouter;
-
+    const colorScheme = useColorScheme();
+    const theme = colorScheme === 'dark' ? CustomDarkTheme : CustomLightTheme;
     const handleConfirm = () => {
 
         setTimeout(() => {
             setShowPrompt(false);
-            router.push('/');
+            router.replace('/'); 
+
         }, 100);
     };
 
@@ -27,6 +34,100 @@ const Terminate = () => {
     const handleCancel = () => {
         setShowPrompt(false);
     };
+
+    const styles = StyleSheet.create({
+        container: {
+
+            alignItems: 'flex-end',
+            padding: 20,
+            paddingTop:40,
+          
+        },
+        // The Main Terminate Button Styles
+        terminateButton: {
+            padding: 20,
+            backgroundColor: theme.colors.card, // bg-red-600
+            justifyContent: 'center',
+            alignItems: 'center',
+        },
+        // Modal Styles
+        modalOverlay: {
+            flex: 1,
+            backgroundColor: 'rgba(0, 0, 0, 0.7)', // bg-black bg-opacity-70
+            justifyContent: 'center',
+            alignItems: 'center',
+            padding: 20,
+        },
+        modalContent: {
+            backgroundColor: 'white',
+            borderRadius: 12, // rounded-xl
+            padding: 30,
+            maxWidth: 350, // max-w-sm
+            width: '100%',
+            alignItems: 'center',
+           
+            display:"flex",
+            flexDirection:"column",
+            gap:5,
+
+            shadowColor: '#000',
+            shadowOffset: { width: 0, height: 10 },
+            shadowOpacity: 0.25,
+            shadowRadius: 10,
+        },
+        modalIcon: {
+            fontSize: 40,
+            color: theme.colors.primary,
+            marginBottom: 10,
+        },
+        modalTitle: {
+            fontSize: 22,
+            fontWeight: '900', 
+            color: '#1f2937',
+            marginBottom: 10,
+            textAlign: 'center',
+        },
+        modalText: {
+            color: '#4b5563', 
+            marginBottom: 24,
+            fontWeight: '500',
+            textAlign: 'center',
+        },
+
+        // Button Group
+        buttonContainer: {
+            flexDirection: 'row',
+            justifyContent: 'space-between',
+            width: '100%',
+            gap: 16, 
+        },
+        actionButton: {
+            flex: 1,
+            paddingVertical: 12,
+            borderRadius: 8,
+            justifyContent: 'center',
+            alignItems: 'center',
+            elevation: 5,
+        },
+        confirmButton: {
+            backgroundColor: theme.colors.border,
+
+        },
+        cancelButton: {
+            backgroundColor: theme.colors.primary, 
+            shadowColor: theme.colors.shadow,
+            shadowOffset: { width: 0, height: 4 },
+            shadowOpacity: 1,
+            shadowRadius: 0,
+        },
+        buttonText: {
+            color: 'white',
+            fontWeight: 'bold',
+            fontSize: 14,
+            textAlign: 'center',
+        }
+    });
+
 
     return (
         <View style={styles.container}>
@@ -37,10 +138,10 @@ const Terminate = () => {
                 activeOpacity={0.7}
             >
                 {/* Replaced Lucide X icon with a simple text cross */}
-                <Text style={styles.terminateIcon}>✕</Text> 
+                <X width={30} height={30} color={theme.colors.stroke} strokeWidth={4}></X>
             </TouchableOpacity>
             
-            {/* Custom Confirmation Modal/Prompt */}
+            {/* Confirmation Prompt */}
             <Modal
                 animationType="fade"
                 transparent={true}
@@ -58,34 +159,41 @@ const Terminate = () => {
                         // Prevent the touch event from propagating to the overlay when clicking inside the content
                         onTouchStart={(e) => e.stopPropagation()} 
                     >
-                        {/* Kindergarten-Friendly French Prompt */}
-                        <Text style={styles.modalIcon}>🛑</Text> {/* Using a stop sign emoji for clarity */}
-                        <Text style={styles.modalTitle}>
-                            Veux-tu faire une pause ?
-                        </Text>
+                        <Image source={SadMascot} style={{ width: 100, height: 100, resizeMode: "contain"}}/>
+                        <ThemedText type='title' weight='extrabold' style={{ lineHeight: 30, textAlign: "center"}}>
+                           Tu vas perdre tout ce que tu as fait pour ton livre d'histoires.
+                        </ThemedText>
                         <Text style={styles.modalText}>
-                            Si tu appuies sur "Oui", tu retourneras au début.
+                            Tu es sûr(e) de vouloir partir ?
                         </Text>
 
                         <View style={styles.buttonContainer}>
                             {/* Confirmation Button (Yes) */}
-                            <TouchableOpacity
+                            <ThemedButton
                                 onPress={handleConfirm}
-                                style={[styles.actionButton, styles.confirmButton]}
-                                activeOpacity={0.8}
+                                elevated 
+                                variant="warn"
+                                border="warn"
+                                shadow='warn'
+                                style={{ display: "flex", flexDirection:"row", gap: 5 }}
+                             
                             >
-                                {/* Replaced Home icon with a house emoji */}
-                                <Text style={styles.buttonText}>🏠 Oui, j'arrête!</Text>
-                            </TouchableOpacity>
+                                <LogOut width={20} height={20} color={'white'} strokeWidth={3}/>
+                                <ThemedText type='body' weight='extrabold' color='card'>Oui, je pars</ThemedText>
+                            </ThemedButton>
                             
                             {/* Cancel Button (No) */}
-                            <TouchableOpacity
+                            <ThemedButton
                                 onPress={handleCancel}
-                                style={[styles.actionButton, styles.cancelButton]}
-                                activeOpacity={0.8}
+                                elevated 
+                                variant="primary"
+                                border="default"
+                                shadow='default'
+                             
                             >
-                                <Text style={styles.buttonText}>Non, je continue!</Text>
-                            </TouchableOpacity>
+                                <ThemedText type='body' weight='extrabold' color='card'>Non, je reste!</ThemedText>
+                            </ThemedButton>
+                          
                         </View>
                     </View>
                 </TouchableOpacity>
@@ -94,107 +202,3 @@ const Terminate = () => {
     );
 }
 
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-        padding: 20,
-        // Add a background color to ensure the component is visible on its own
-        backgroundColor: '#f0f0f0', 
-    },
-    // The Main Terminate Button Styles
-    terminateButton: {
-        padding: 16,
-        borderRadius: 50, // Making it perfectly round
-        backgroundColor: '#dc2626', // bg-red-600
-        elevation: 10, // Shadow equivalent for Android
-        shadowColor: '#000', // Shadow for iOS
-        shadowOffset: { width: 0, height: 4 },
-        shadowOpacity: 0.3,
-        shadowRadius: 5,
-        justifyContent: 'center',
-        alignItems: 'center',
-    },
-    terminateIcon: {
-        fontSize: 30, // w-8 h-8 equivalent
-        color: 'white',
-        fontWeight: 'bold',
-    },
-
-    // Modal Styles
-    modalOverlay: {
-        flex: 1,
-        backgroundColor: 'rgba(0, 0, 0, 0.7)', // bg-black bg-opacity-70
-        justifyContent: 'center',
-        alignItems: 'center',
-        padding: 20,
-    },
-    modalContent: {
-        backgroundColor: 'white',
-        borderRadius: 12, // rounded-xl
-        padding: 30,
-        maxWidth: 350, // max-w-sm
-        width: '100%',
-        alignItems: 'center',
-        elevation: 20, // Strong shadow
-        // iOS shadows
-        shadowColor: '#000',
-        shadowOffset: { width: 0, height: 10 },
-        shadowOpacity: 0.25,
-        shadowRadius: 10,
-    },
-    modalIcon: {
-        fontSize: 40,
-        // Changed icon from ⚗ (retort) to 🛑 (stop sign) for better context
-        color: '#ef4444', // text-red-500
-        marginBottom: 10,
-    },
-    modalTitle: {
-        fontSize: 22,
-        fontWeight: '900', // font-extrabold
-        color: '#1f2937', // text-gray-800
-        marginBottom: 10,
-        textAlign: 'center',
-    },
-    modalText: {
-        color: '#4b5563', // text-gray-600
-        marginBottom: 24,
-        fontWeight: '500', // font-medium
-        textAlign: 'center',
-    },
-
-    // Button Group
-    buttonContainer: {
-        flexDirection: 'row',
-        justifyContent: 'space-between',
-        width: '100%',
-        gap: 16, // Spacing between buttons
-    },
-    actionButton: {
-        flex: 1,
-        paddingVertical: 12,
-        borderRadius: 8,
-        justifyContent: 'center',
-        alignItems: 'center',
-        elevation: 5,
-        shadowColor: '#000',
-        shadowOffset: { width: 0, height: 2 },
-        shadowOpacity: 0.25,
-        shadowRadius: 3.84,
-    },
-    confirmButton: {
-        backgroundColor: '#10b981', // bg-green-500
-    },
-    cancelButton: {
-        backgroundColor: '#ef4444', // bg-red-500
-    },
-    buttonText: {
-        color: 'white',
-        fontWeight: 'bold',
-        fontSize: 14,
-        textAlign: 'center',
-    }
-});
-
-export default Terminate;
