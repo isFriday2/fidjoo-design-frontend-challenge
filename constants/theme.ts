@@ -6,6 +6,8 @@ export interface ExtendedTheme extends Theme {
   colors: Theme['colors'] & {
     secondary: string;
     tertiary: string;
+    shadow: string;
+    stroke: string;
   };
 }
 
@@ -23,11 +25,11 @@ export type BodyFontWeight = 'regular' | 'medium' | 'semibold' | 'bold';
 // Font mappings
 export const Fonts = {
   heading: {
-    regular: 'Baloo-Regular',
-    medium: 'Baloo-Medium',
-    semibold: 'Baloo-SemiBold',
-    bold: 'Baloo-Bold',
-    extrabold: 'Baloo-ExtraBold',
+    regular: 'Baloo2-Regular',
+    medium: 'Baloo2-Medium',
+    semibold: 'Baloo2-SemiBold',
+    bold: 'Baloo2-Bold',
+    extrabold: 'Baloo2-ExtraBold',
   },
   body: {
     regular: 'Raleway-Regular',
@@ -47,6 +49,7 @@ export type AppFonts = {
   body: { [K in BodyFontWeight]: (typeof Fonts)['body'][K] };
 };
 
+
 // Thème personnalisé pour React Navigation
 export const CustomLightTheme: ExtendedTheme = {
   ...DefaultTheme,
@@ -58,8 +61,10 @@ export const CustomLightTheme: ExtendedTheme = {
     background: '#EDEBE5',
     card: '#F4F2EF',
     text: '#11181C',
-    border: '#ddd',
+    border: '#E4E4E7',
     notification: '#ff3b30',
+    shadow:"#3f8accff", //modified for shadow boxes
+    stroke:"#9F9FA9", // modified for strokes and buttons
   },
   fonts: {
     regular: {
@@ -91,8 +96,11 @@ export const CustomDarkTheme: ExtendedTheme = {
     background: '#151718',
     card: '#151718',
     text: '#FFFFFF',
-    border: '#333',
+    border: '#E4E4E7',
     notification: '#ff453a',
+    shadow:"#3f8accff",
+    stroke:"#9F9FA9",
+
   },
   fonts: {
     regular: {
