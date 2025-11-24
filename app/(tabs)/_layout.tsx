@@ -2,14 +2,17 @@ import { Tabs } from 'expo-router';
 import React from 'react';
 
 import CustomTabIcon from '@/components/CustomTab';
-import { CustomLightTheme, CustomDarkTheme } from '@/constants/theme';
-import { useColorScheme } from '@/hooks/use-color-scheme';
+import Header from '@/components/Header';
 import { House, WandSparkles, Book, Gamepad2, Menu } from 'lucide-react-native';
 
+import { useColorScheme } from '@/hooks/use-color-scheme';
+import { CustomDarkTheme, CustomLightTheme } from '@/constants/theme';
+
+
 function WithLucide() {
+
   const colorScheme = useColorScheme();
   const theme = colorScheme === 'dark' ? CustomDarkTheme : CustomLightTheme;
-
   return (
     <Tabs
       screenOptions={{
@@ -20,14 +23,14 @@ function WithLucide() {
       <Tabs.Screen
         name="index"
         options={{
-          title: 'Home',
+          title: 'home',
           tabBarIcon: ({ color }: { color: string }) => <House size={28} color={color} />,
         }}
       />
       <Tabs.Screen
         name="game"
         options={{
-          title: 'Game',
+          title: 'game',
           tabBarIcon: ({ color }: { color: string }) => <Gamepad2 size={28} color={color} />,
         }}
       />
@@ -58,6 +61,7 @@ function WithLucide() {
 }
 
 function CustomTab() {
+
   const colorScheme = useColorScheme();
   const theme = colorScheme === 'dark' ? CustomDarkTheme : CustomLightTheme;
 
@@ -66,8 +70,8 @@ function CustomTab() {
     <Tabs
       screenOptions={{
         tabBarActiveTintColor: theme.colors.primary,
-        headerShown: false,
-        tabBarShowLabel: false, // Hides the title label
+        // headerShown: true,
+        // tabBarShowLabel: false, // Hides the title label
         // Set tabBarStyle background color if needed
         // tabBarStyle: { backgroundColor: theme.colors.background },
       }}>
@@ -76,7 +80,10 @@ function CustomTab() {
       <Tabs.Screen
         name="index"
         options={{
-          title: 'Home',
+          title: '',
+        
+          header: () => <Header></Header>,
+          headerTransparent: true,
           tabBarIcon: ({ color, focused }: { color: string, focused: boolean }) => (
             <CustomTabIcon name="index" color={color} focused={focused} />
           ),
@@ -85,7 +92,9 @@ function CustomTab() {
       <Tabs.Screen
         name="game"
         options={{
-          title: 'Game',
+          title: '',
+          header: () => <Header></Header>,
+          headerTransparent: true,
           tabBarIcon: ({ color, focused }: { color: string, focused: boolean }) => (
             <CustomTabIcon name="game" color={color} focused={focused} />
           ),
@@ -94,7 +103,9 @@ function CustomTab() {
       <Tabs.Screen
         name="creation"
         options={{
-          title: 'Creation',
+          title: '',
+          header: () => <Header></Header>,
+          headerTransparent: true,
           tabBarIcon: ({ color, focused }: { color: string, focused: boolean }) => (
             <CustomTabIcon name="creation" color={color} focused={focused} />
           ),
@@ -103,7 +114,9 @@ function CustomTab() {
       <Tabs.Screen
         name="story"
         options={{
-          title: 'Story',
+          title: '',
+          header: () => <Header></Header>,
+          headerTransparent: true,
           tabBarIcon: ({ color, focused }: { color: string, focused: boolean }) => (
             <CustomTabIcon name="story" color={color} focused={focused} />
           ),
@@ -112,7 +125,9 @@ function CustomTab() {
       <Tabs.Screen
         name="menu"
         options={{
-          title: 'All items',
+          title: '',
+          header: () => <Header></Header>,
+          headerTransparent: true,
           tabBarIcon: ({ color, focused }: { color: string, focused: boolean }) => (
             <CustomTabIcon name="menu" color={color} focused={focused} />
           ),
@@ -132,3 +147,4 @@ export default function TabLayout() {
     <CustomTab></CustomTab>
   );
 }
+
