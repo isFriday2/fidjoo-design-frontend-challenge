@@ -2,31 +2,67 @@ import React, { useState } from 'react';
 import { View, Text, Button, StyleSheet } from 'react-native';
 import { useRouter, useFocusEffect } from 'expo-router'; 
 import { useNavigation } from '@react-navigation/native';
-import { Stack } from 'expo-router'; // Only used if you want to set dynamic header options.
+import { CarouSelector } from '@/components/CarouSelector';
+import { ThemedButton } from '@/components/ThemedButton';
+import { ThemedText } from '@/components/ThemedText';
+import { Check } from 'lucide-react-native';
+import ThemedNumber from '@/components/ThemedNumber';
+import ProgressBar from '@/components/ProgressBar';
 
-// Define the steps (pages) for clarity
+
 type CreationStep = 'THEME' | 'HEROES' | 'BRAVO';
 
-// --- Step Components ---
 
-// Component for Step 1
-const SelectThemeStep = ({ onNext }: { onNext: () => void }) => (
+type Props = {
+  data: [];
+  onNext: () => void
+  onSelectChoice: (styleName: string) => void;
+}
+// Step 1
+const SelectThemeStep = ({ data, onNext, onSelectChoice }: Props) => (
   <View style={styles.stepContainer}>
-    <Text style={styles.title}>1. Select Theme</Text>
-    <Text style={styles.subtitle}>Choose the genre for your story.</Text>
-    <Button 
-      title="Go to Select Heroes"
-      onPress={onNext}
-    />
+
+    {/* <ProgressBar steps={2} current={1}/>  */}
+    {/* DONT HAVE TIME AH */}
+
+    <View style={{ display:"flex", flexDirection:"row", gap: 10, alignItems: "center"}}>
+      <ThemedNumber num={1}/>
+      <ThemedText type='title' weight='extrabold'>
+        Quelle aventure ?
+      </ThemedText>
+    </View>
+    
+    
+
+    <CarouSelector 
+      items = {data}
+      onChange={ (item) => {
+        onSelectChoice(item.name);
+        
+      }}
+      />
+
+    <ThemedButton
+        onPress={onNext}
+        elevated 
+        variant="primary"
+        border="default"
+        shadow='default'
+        style={{ width:"85%", display: "flex", flexDirection:"row", gap: 5}}
+    >
+        <ThemedText type='body' weight='extrabold' color='card'>Celui-ci</ThemedText>
+        <Check strokeWidth={5} color={"white"} width={20} height={20}/>
+    </ThemedButton>
   </View>
 );
 
-// Component for Step 2: Now includes a 'Back' button
+//  Step 2
 const SelectHeroesStep = ({ onNext, onBack }: { onNext: () => void, onBack: () => void }) => (
   <View style={styles.stepContainer}>
-    <Text style={styles.title}>2. Select Heroes</Text>
-    <Text style={styles.subtitle}>Pick the main characters for the story.</Text>
-    
+    <ThemedText>
+      2. Select Heroes
+    </ThemedText>
+   
     <View style={styles.buttonGroup}>
       <Button 
         title="⬅️ Back to Theme"
@@ -51,8 +87,9 @@ const BravoStep = () => {
   
   return (
     <View style={styles.stepContainer}>
-      <Text style={styles.title}>3. Bravo!</Text>
-      <Text style={styles.subtitle}>Your creation is complete.</Text>
+      <ThemedText>
+      2. Select Heroes
+    </ThemedText>
       <Button 
         title="Return to Tabs"
         onPress={handleReturnToTabs}
@@ -66,7 +103,10 @@ const BravoStep = () => {
 
 export default function CreationStepperScreen() {
   const navigation = useNavigation();
+
   const [currentStep, setCurrentStep] = useState<CreationStep>('THEME');
+
+  const [selectedStyleName, setSelectedStyleName] = useState<string | null>(null);
 
   // Logic to move forward
   const goToNextStep = () => {
@@ -82,28 +122,27 @@ export default function CreationStepperScreen() {
     if (currentStep === 'HEROES') {
       setCurrentStep('THEME');
     }
-    // Note: 'THEME' is the first step, no back action needed here.
   };
 
-  // Dynamic Header Title (Optional, but recommended)
-  useFocusEffect(
-    React.useCallback(() => {
-      let title = '';
-      // if (currentStep === 'THEME') {
-      //   title = '1. Select Theme';
-      // } else if (currentStep === 'HEROES') {
-      //   title = '2. Select Heroes';
-      // } else {
-      //   title = 'Bravo!';
-      // }
-      navigation.setOptions({ title }); 
-    }, [currentStep, navigation])
-  );
+  // useFocusEffect(
+  //   React.useCallback(() => {
+  //     let title = '';
+  //     navigation.setOptions({ title }); 
+  //   }, [currentStep, navigation])
+  // )
+
+  const choices = require("@/assets/data/choices.json")
+
+ const styles = choices.filter((item: { type: any; style: any; }) => item.type === "style");
 
   const renderStep = () => {
     switch (currentStep) {
       case 'THEME':
-        return <SelectThemeStep onNext={goToNextStep} />;
+        return <SelectThemeStep 
+                onNext={goToNextStep} 
+                data={styles}
+                onSelectChoice={(name) => setSelectedStyleName(name)}
+                />;
       case 'HEROES':
         return <SelectHeroesStep onNext={goToNextStep} onBack={goToPreviousStep} />;
       case 'BRAVO':
@@ -123,25 +162,21 @@ export default function CreationStepperScreen() {
 const styles = StyleSheet.create({
     container: {
         flex: 1, 
-        justifyContent: 'center', 
+        // justifyContent: 'center', 
         alignItems: 'center',
-        padding: 20,
+
     },
+    
     stepContainer: {
-        width: '80%', // Make buttons easier to click
         alignItems: 'center',
+        display: 'flex',
+        flexDirection: "column",
+        justifyContent: "flex-start",
+        gap: 5,
+
+        
     },
-    title: {
-        fontSize: 24,
-        fontWeight: 'bold',
-        marginBottom: 10,
-    },
-    subtitle: {
-        marginBottom: 30,
-        fontSize: 16,
-        color: '#666',
-        textAlign: 'center',
-    },
+
     buttonGroup: {
         flexDirection: 'row',
         justifyContent: 'space-between',

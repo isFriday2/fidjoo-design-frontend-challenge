@@ -37,15 +37,15 @@ export default function Terminate() {
 
     const styles = StyleSheet.create({
         container: {
-
             alignItems: 'flex-end',
             padding: 20,
             paddingTop:40,
+            paddingBottom:0,
           
         },
         // The Main Terminate Button Styles
         terminateButton: {
-            padding: 20,
+            padding: 10,
             backgroundColor: theme.colors.card, // bg-red-600
             justifyContent: 'center',
             alignItems: 'center',
@@ -68,31 +68,19 @@ export default function Terminate() {
            
             display:"flex",
             flexDirection:"column",
-            gap:5,
+            gap:10,
 
-            shadowColor: '#000',
-            shadowOffset: { width: 0, height: 10 },
-            shadowOpacity: 0.25,
-            shadowRadius: 10,
+            // shadowColor: themes,
+            // shadowOffset: { width: 0, height: 10 },
+            // shadowOpacity: 0.25,
+            // shadowRadius: 10,
         },
         modalIcon: {
             fontSize: 40,
             color: theme.colors.primary,
             marginBottom: 10,
         },
-        modalTitle: {
-            fontSize: 22,
-            fontWeight: '900', 
-            color: '#1f2937',
-            marginBottom: 10,
-            textAlign: 'center',
-        },
-        modalText: {
-            color: '#4b5563', 
-            marginBottom: 24,
-            fontWeight: '500',
-            textAlign: 'center',
-        },
+    
 
         // Button Group
         buttonContainer: {
@@ -163,9 +151,9 @@ export default function Terminate() {
                         <ThemedText type='title' weight='extrabold' style={{ lineHeight: 30, textAlign: "center"}}>
                            Tu vas perdre tout ce que tu as fait pour ton livre d'histoires.
                         </ThemedText>
-                        <Text style={styles.modalText}>
+                        <ThemedText type='body' weight='regular' style={{ lineHeight: 20, textAlign: "center"}}>
                             Tu es sûr(e) de vouloir partir ?
-                        </Text>
+                        </ThemedText>
 
                         <View style={styles.buttonContainer}>
                             {/* Confirmation Button (Yes) */}
