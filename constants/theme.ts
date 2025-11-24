@@ -7,6 +7,7 @@ export interface ExtendedTheme extends Theme {
     secondary: string;
     tertiary: string;
     shadow: string;
+    stroke: string;
   };
 }
 
@@ -62,7 +63,8 @@ export const CustomLightTheme: ExtendedTheme = {
     text: '#11181C',
     border: '#E4E4E7',
     notification: '#ff3b30',
-    shadow:"#3f8accff",
+    shadow:"#3f8accff", //modified for shadow boxes
+    stroke:"#9F9FA9", // modified for strokes and buttons
   },
   fonts: {
     regular: {
@@ -97,6 +99,8 @@ export const CustomDarkTheme: ExtendedTheme = {
     border: '#E4E4E7',
     notification: '#ff453a',
     shadow:"#3f8accff",
+    stroke:"#9F9FA9",
+
   },
   fonts: {
     regular: {
