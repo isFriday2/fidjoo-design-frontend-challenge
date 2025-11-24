@@ -58,11 +58,13 @@ https://www.figma.com/proto/HQI0wl6WCwSo8nOofl9Ljw/FIDJOO?node-id=1-2&viewport=1
 **Due to time limitations**, animations are not implemented yet. Future versions could include micro-interactions (button bounce, mascot movements, transitions) to further support engagement, delight, and comprehension without overwhelming the child.
 
 ## 9.Attribution & Ownership Notice
+Designed by [Soniipy](https://sonniepoon.com/)
+
 This design and its associated code were created specifically for the purposes of the provided design brief. If this work is not selected for the final product, I kindly ask that we have a conversation before any part of this work is reused. I would truly appreciate being credited appropriately and ensuring that any reuse aligns with our mutual understanding.
 
 **Thank you for your consideration, professionalism and for acknowledging the creative effort behind this project.**
 
-----------------------------------------------------------ORIGINAL README-----------------------------------------------------------
+------------------------------------------------ORIGINAL README-------------------------------------------------
 
 
 
