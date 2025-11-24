@@ -3,24 +3,21 @@ import { View, Text, Button, StyleSheet } from 'react-native';
 import { useRouter, useFocusEffect } from 'expo-router'; 
 import { useNavigation } from '@react-navigation/native'
 
-// Define the steps (pages) for clarity
 type CreationStep = 'THEME' | 'HEROES' | 'BRAVO';
 
 // --- Step Components ---
 
-// Component for Step 1
 const SelectThemeStep = ({ onNext }: { onNext: () => void }) => (
   <View style={styles.stepContainer}>
-    <Text style={styles.title}>1. Select Theme</Text>
+    <Text style={styles.title}>Book Page 1</Text>
     <Text style={styles.subtitle}>Choose the genre for your story.</Text>
     <Button 
-      title="Go to Select Heroes"
+      title="Next Page"
       onPress={onNext}
     />
   </View>
 );
 
-// Component for Step 2: Now includes a 'Back' button
 const SelectHeroesStep = ({ onNext, onBack }: { onNext: () => void, onBack: () => void }) => (
   <View style={styles.stepContainer}>
     <Text style={styles.title}>2. Select Heroes</Text>
@@ -28,30 +25,28 @@ const SelectHeroesStep = ({ onNext, onBack }: { onNext: () => void, onBack: () =
     
     <View style={styles.buttonGroup}>
       <Button 
-        title="⬅️ Back to Theme"
+        title="Previous"
         onPress={onBack}
       />
       <Button 
-        title="Go to Bravo! ➡️"
+        title="Next Page"
         onPress={onNext}
       />
     </View>
   </View>
 );
 
-// Component for Step 3: End of the flow
 const BravoStep = () => {
   const router = useRouter();
 
   const handleReturnToTabs = () => {
-    // Explicitly navigate back to the Home tab to exit the stack cleanly
     router.replace('/'); 
   };
   
   return (
     <View style={styles.stepContainer}>
-      <Text style={styles.title}>3. Bravo!</Text>
-      <Text style={styles.subtitle}>Your creation is complete.</Text>
+      <Text style={styles.title}>Last page of the book</Text>
+      <Text style={styles.subtitle}>Yeahs</Text>
       <Button 
         title="Return to Tabs"
         onPress={handleReturnToTabs}
@@ -61,13 +56,11 @@ const BravoStep = () => {
 };
 
 
-// --- Main Screen Component ---
 
 export default function StorybookStepperScreen() {
   const navigation = useNavigation();
   const [currentStep, setCurrentStep] = useState<CreationStep>('THEME');
 
-  // Logic to move forward
   const goToNextStep = () => {
     if (currentStep === 'THEME') {
       setCurrentStep('HEROES');
@@ -81,19 +74,17 @@ export default function StorybookStepperScreen() {
     if (currentStep === 'HEROES') {
       setCurrentStep('THEME');
     }
-    // Note: 'THEME' is the first step, no back action needed here.
   };
 
-  // Dynamic Header Title (Optional, but recommended)
   useFocusEffect(
     React.useCallback(() => {
       let title = '';
       if (currentStep === 'THEME') {
-        title = '1. Select Theme';
+        title = 'The Sweet Quest of Prince Chocolat and Glim Page 1/8';
       } else if (currentStep === 'HEROES') {
-        title = '2. Select Heroes';
+        title = 'The Sweet Quest of Prince Chocolat and Glim Page 2/8';
       } else {
-        title = 'Bravo!';
+        title = 'The Sweet Quest of Prince Chocolat and Glim Page 3/8';
       }
       navigation.setOptions({ title }); 
     }, [currentStep, navigation])
@@ -127,7 +118,7 @@ const styles = StyleSheet.create({
         padding: 20,
     },
     stepContainer: {
-        width: '80%', // Make buttons easier to click
+        width: '80%',
         alignItems: 'center',
     },
     title: {
